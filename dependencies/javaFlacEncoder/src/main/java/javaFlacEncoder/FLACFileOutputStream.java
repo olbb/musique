@@ -46,11 +46,10 @@ public class FLACFileOutputStream implements FLACOutputStream{
         try {
             fos = new FileOutputStream(filename);
             valid = true;
-        }
-        catch(FileNotFoundException e) {
+        } catch(FileNotFoundException e) {
             System.err.println("Error creating file");
             valid = false;
-        }catch(IOException e) {
+        } catch(Exception e) {
             System.err.println("Error handling file");
             valid = false;
         }
