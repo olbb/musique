@@ -8,20 +8,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":alacdecoder"))
-    implementation(project(":jaad"))
-    implementation(project(":cuelib"))
-    implementation(project(":jaudiotagger"))
-    implementation(project(":javaFlacEncoder"))
-    implementation(project(":jflac"))
-    implementation(project(":tta"))
-    implementation(project(":vorbis-java"))
-    implementation(project(":wavpack"))
-    implementation(project(":jmac"))
-    implementation(project(":javalayer"))
-    implementation(project(":jorbis"))
-    implementation(project(":last.fm-bindings"))
-    implementation(project(":discogs"))
+    implementation(project(":musique-player"))
     implementation("com.github.tulskiy:jkeymaster:1.3")
     implementation("commons-configuration:commons-configuration:1.6")
     testImplementation("junit:junit:4.8.1")

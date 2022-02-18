@@ -69,9 +69,9 @@ import com.tulskiy.musique.gui.model.SingleTagFieldModel;
 import com.tulskiy.musique.gui.model.Tools;
 import com.tulskiy.musique.gui.model.TrackInfoItem;
 import com.tulskiy.musique.gui.playlist.PlaylistTable;
-import com.tulskiy.musique.playlist.Track;
-import com.tulskiy.musique.playlist.TrackData;
-import com.tulskiy.musique.system.TrackIO;
+import com.tulskiy.musique.track.Track;
+import com.tulskiy.musique.track.TrackData;
+import com.tulskiy.musique.track.TrackIO;
 import com.tulskiy.musique.util.Util;
 
 /**

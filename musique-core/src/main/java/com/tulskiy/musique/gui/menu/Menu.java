@@ -18,7 +18,7 @@
 package com.tulskiy.musique.gui.menu;
 
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 import javax.swing.*;
 import java.util.ArrayList;

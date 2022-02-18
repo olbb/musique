@@ -17,7 +17,7 @@
 
 package com.tulskiy.musique.playlist.formatting.tokens;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 /**
  * @Author: Denis Tulskiy

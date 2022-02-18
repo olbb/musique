@@ -22,7 +22,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.data.FieldValues;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.util.Util;
 
 /**

@@ -22,7 +22,7 @@ import java.util.Stack;
 
 import org.jaudiotagger.tag.FieldKey;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 /**
  * @author mliauchuk

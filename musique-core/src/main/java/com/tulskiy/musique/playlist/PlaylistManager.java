@@ -26,6 +26,7 @@ import com.tulskiy.musique.library.Library;
 import com.tulskiy.musique.system.Application;
 import com.tulskiy.musique.system.configuration.Configuration;
 import com.tulskiy.musique.system.configuration.PlaylistConfiguration;
+import com.tulskiy.musique.track.Track;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -100,7 +101,7 @@ public class PlaylistManager {
         if (index < 0 || index >= playlists.size())
             index = 0;
         setActivePlaylist(playlists.get(index));
-        app.getPlayer().setPlaybackOrder(order);
+        Application.getInstance().setPlayerOrder(order);
 
         int lastPlayed = config.getInt("player.lastPlayed", 0);
         if (lastPlayed >= 0 && lastPlayed < activePlaylist.size()) {

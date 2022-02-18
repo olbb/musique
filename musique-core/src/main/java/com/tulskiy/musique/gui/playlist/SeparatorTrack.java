@@ -18,7 +18,7 @@
 package com.tulskiy.musique.gui.playlist;
 
 import com.tulskiy.musique.gui.components.Separator;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 /**
  * Author: Denis Tulskiy

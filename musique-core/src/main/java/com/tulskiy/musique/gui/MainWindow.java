@@ -23,7 +23,7 @@ import com.tulskiy.musique.gui.dialogs.TextDialog;
 import com.tulskiy.musique.gui.library.LibraryView;
 import com.tulskiy.musique.gui.playlist.PlaylistPanel;
 import com.tulskiy.musique.images.Images;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.playlist.formatting.Parser;
 import com.tulskiy.musique.playlist.formatting.tokens.Expression;
 import com.tulskiy.musique.system.Application;

@@ -20,9 +20,7 @@ package com.tulskiy.musique.plugins.hotkeys;
 import java.awt.Window;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.KeyStroke;
@@ -30,7 +28,8 @@ import javax.swing.KeyStroke;
 import com.tulskiy.keymaster.common.HotKey;
 import com.tulskiy.keymaster.common.HotKeyListener;
 import com.tulskiy.keymaster.common.Provider;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.system.Application;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.spi.Plugin;
 import com.tulskiy.musique.util.AudioMath;
 
@@ -73,7 +72,7 @@ public class GlobalHotKeysPlugin extends Plugin {
         NEXT_RANDOM(new HotKeyListener() {
             @Override
             public void onHotKey(HotKey hotKey) {
-                Track track = player.getPlaybackOrder().nextRandom();
+                Track track = Application.getInstance().getPlayerOrder().nextRandom();
                 player.open(track);
             }
         }),

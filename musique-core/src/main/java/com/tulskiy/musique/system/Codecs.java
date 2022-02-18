@@ -34,7 +34,7 @@ import com.tulskiy.musique.audio.formats.uncompressed.PCMDecoder;
 import com.tulskiy.musique.audio.formats.uncompressed.PCMEncoder;
 import com.tulskiy.musique.audio.formats.wavpack.WavPackDecoder;
 import com.tulskiy.musique.audio.formats.wavpack.WavPackEncoder;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.util.Util;
 
 import java.io.IOException;

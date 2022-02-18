@@ -22,7 +22,7 @@ import com.tulskiy.musique.gui.playlist.PlaylistColumn;
 import com.tulskiy.musique.gui.playlist.PlaylistTable;
 import com.tulskiy.musique.images.Images;
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 import javax.swing.*;
 import java.awt.*;

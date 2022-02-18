@@ -19,7 +19,7 @@ package com.tulskiy.musique.plugins;
 
 import com.tulskiy.musique.gui.menu.Menu;
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.spi.Plugin;
 
 import javax.swing.*;

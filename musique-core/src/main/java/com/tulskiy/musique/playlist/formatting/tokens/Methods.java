@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 
 import com.tulskiy.musique.audio.player.Player;
 import com.tulskiy.musique.images.Images;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.system.Application;
 import com.tulskiy.musique.util.Util;
 

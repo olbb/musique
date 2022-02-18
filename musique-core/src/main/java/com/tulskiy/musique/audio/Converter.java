@@ -17,19 +17,21 @@
 
 package com.tulskiy.musique.audio;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.data.Configuration;
+import com.tulskiy.musique.data.Proxy;
 import com.tulskiy.musique.playlist.formatting.Parser;
 import com.tulskiy.musique.playlist.formatting.tokens.Expression;
 import com.tulskiy.musique.system.Application;
 import com.tulskiy.musique.system.Codecs;
-import com.tulskiy.musique.system.TrackIO;
-import com.tulskiy.musique.system.configuration.Configuration;
+import com.tulskiy.musique.track.Track;
+import com.tulskiy.musique.track.TrackIO;
 import com.tulskiy.musique.util.AudioMath;
 
-import javax.swing.*;
 import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 
 /**
  * Author: Denis Tulskiy
@@ -37,7 +39,7 @@ import java.util.logging.Logger;
  */
 public class Converter {
     private Logger logger = Logger.getLogger(getClass().getName());
-    private Configuration config = Application.getInstance().getConfiguration();
+    private Configuration config = Proxy.Ins.getConfiguration();
     private Expression fileNameFormat;
     private Encoder encoder;
     private Decoder decoder;

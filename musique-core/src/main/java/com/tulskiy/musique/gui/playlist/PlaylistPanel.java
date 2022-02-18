@@ -67,7 +67,7 @@ import com.tulskiy.musique.images.Images;
 import com.tulskiy.musique.playlist.PlaybackOrder;
 import com.tulskiy.musique.playlist.Playlist;
 import com.tulskiy.musique.playlist.PlaylistManager;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.system.Application;
 import com.tulskiy.musique.system.configuration.Configuration;
 import com.tulskiy.musique.system.configuration.PlaylistConfiguration;
@@ -117,7 +117,7 @@ public class PlaylistPanel extends JPanel {
         tabs.setSelectedIndex(-1);
         tabs.setSelectedIndex(playlists.indexOf(playlist));
 
-        PlaybackOrder order = app.getPlayer().getPlaybackOrder();
+        PlaybackOrder order = Application.getInstance().getPlayerOrder();
         Track lastPlayed = order.getLastPlayed();
 
         if (lastPlayed != null) {

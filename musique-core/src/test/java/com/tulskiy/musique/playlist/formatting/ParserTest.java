@@ -25,7 +25,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.playlist.formatting.tokens.Expression;
 
 /**

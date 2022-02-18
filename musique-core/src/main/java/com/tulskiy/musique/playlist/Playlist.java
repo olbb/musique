@@ -42,18 +42,22 @@ import java.util.Scanner;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.datatype.Pair;
 
 import com.tulskiy.musique.audio.AudioFileReader;
-import com.tulskiy.musique.gui.model.FieldValues;
+import com.tulskiy.musique.data.FieldValues;
 import com.tulskiy.musique.gui.playlist.PlaylistColumn;
 import com.tulskiy.musique.gui.playlist.SeparatorTrack;
 import com.tulskiy.musique.playlist.formatting.Parser;
 import com.tulskiy.musique.playlist.formatting.tokens.Expression;
-import com.tulskiy.musique.system.TrackIO;
+import com.tulskiy.musique.track.TrackIO;
+import com.tulskiy.musique.track.Track;
+import com.tulskiy.musique.track.TrackData;
+import com.tulskiy.musique.track.TrackDataCache;
 import com.tulskiy.musique.util.AudioMath;
 import com.tulskiy.musique.util.Util;
+
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.datatype.Pair;
 
 /**
  * Author: Denis Tulskiy

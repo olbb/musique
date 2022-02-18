@@ -22,7 +22,7 @@ import com.tulskiy.musique.audio.player.PlayerEvent;
 import com.tulskiy.musique.audio.player.PlayerListener;
 import com.tulskiy.musique.audio.player.io.AudioOutput;
 import com.tulskiy.musique.playlist.PlaybackOrder;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.playlist.formatting.Parser;
 import com.tulskiy.musique.playlist.formatting.tokens.Expression;
 import com.tulskiy.musique.system.Application;
@@ -265,7 +265,7 @@ public class ControlPanel extends javax.swing.JPanel {
         nextRandomButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Track track = player.getPlaybackOrder().nextRandom();
+                Track track = Application.getInstance().getPlayerOrder().nextRandom();
                 player.open(track);
             }
         });

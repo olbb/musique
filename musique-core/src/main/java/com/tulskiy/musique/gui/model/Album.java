@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 /**
  * @author mliauchuk

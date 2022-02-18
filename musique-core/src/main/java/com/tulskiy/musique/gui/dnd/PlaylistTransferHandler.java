@@ -21,7 +21,7 @@ import com.tulskiy.musique.gui.dialogs.ProgressDialog;
 import com.tulskiy.musique.gui.dialogs.Task;
 import com.tulskiy.musique.gui.playlist.PlaylistTable;
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 import javax.swing.*;
 import java.awt.datatransfer.DataFlavor;

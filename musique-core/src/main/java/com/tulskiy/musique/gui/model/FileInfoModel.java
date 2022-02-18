@@ -25,8 +25,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import com.tulskiy.musique.playlist.Track;
-import com.tulskiy.musique.playlist.TrackData;
+import com.tulskiy.musique.track.Track;
+import com.tulskiy.musique.track.TrackData;
 import com.tulskiy.musique.util.Util;
 
 /**

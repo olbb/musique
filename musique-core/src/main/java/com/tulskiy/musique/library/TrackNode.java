@@ -17,7 +17,7 @@
 
 package com.tulskiy.musique.library;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 /**
  * Author: Denis Tulskiy

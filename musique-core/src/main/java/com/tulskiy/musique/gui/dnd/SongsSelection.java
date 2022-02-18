@@ -17,7 +17,7 @@
 
 package com.tulskiy.musique.gui.dnd;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;

@@ -71,6 +71,7 @@ public class Application {
     public File CONFIG_HOME;
     private File configFile;
     private PluginLoader pluginLoader;
+    private PlaybackOrder playerOrder;
 
     public static Application getInstance() {
         return ourInstance;
@@ -198,7 +199,7 @@ public class Application {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 int index = configuration.getInt(evt.getPropertyName(), 0);
-                player.getPlaybackOrder().setOrder(PlaybackOrder.Order.values()[index]);
+                playerOrder.setOrder(PlaybackOrder.Order.values()[index]);
             }
         });
         UIManager.put("Slider.paintValue", Boolean.FALSE);
@@ -304,5 +305,13 @@ public class Application {
 
     public PluginLoader getPluginLoader() {
         return pluginLoader;
+    }
+
+    public PlaybackOrder getPlayerOrder() {
+        return playerOrder;
+    }
+
+    public void setPlayerOrder(PlaybackOrder playerOrder) {
+        this.playerOrder = playerOrder;
     }
 }

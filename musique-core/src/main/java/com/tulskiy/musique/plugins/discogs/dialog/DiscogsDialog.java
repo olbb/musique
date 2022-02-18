@@ -38,8 +38,8 @@ import org.jaudiotagger.tag.FieldKey;
 import com.tulskiy.musique.gui.dialogs.ProgressDialog;
 import com.tulskiy.musique.gui.dialogs.Task;
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
-import com.tulskiy.musique.playlist.TrackData;
+import com.tulskiy.musique.track.Track;
+import com.tulskiy.musique.track.TrackData;
 import com.tulskiy.musique.plugins.discogs.DiscogsCaller;
 import com.tulskiy.musique.plugins.discogs.DiscogsListener;
 import com.tulskiy.musique.plugins.discogs.model.DiscogsArtistListModel;
@@ -49,7 +49,7 @@ import com.tulskiy.musique.plugins.discogs.model.DiscogsTrackListModel;
 import com.tulskiy.musique.plugins.discogs.model.MusiqueTrackListModel;
 import com.tulskiy.musique.plugins.discogs.model.ReleaseTracklistingModel;
 import com.tulskiy.musique.plugins.discogs.util.DiscogsModelUtil;
-import com.tulskiy.musique.system.TrackIO;
+import com.tulskiy.musique.track.TrackIO;
 import com.tulskiy.musique.util.Util;
 
 public class DiscogsDialog extends JDialog implements DiscogsListener {

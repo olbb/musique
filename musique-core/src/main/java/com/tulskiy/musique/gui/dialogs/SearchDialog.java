@@ -23,9 +23,8 @@ import com.tulskiy.musique.gui.playlist.PlaylistColumn;
 import com.tulskiy.musique.gui.playlist.PlaylistTable;
 import com.tulskiy.musique.playlist.PlaybackOrder;
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.system.Application;
-import com.tulskiy.musique.util.Util;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -114,7 +113,7 @@ public class SearchDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (Track track : table.getSelectedSongs()) {
-                    PlaybackOrder order = player.getPlaybackOrder();
+                    PlaybackOrder order = Application.getInstance().getPlayerOrder();
                     order.enqueue(track, playlist);
                 }
                 table.update();

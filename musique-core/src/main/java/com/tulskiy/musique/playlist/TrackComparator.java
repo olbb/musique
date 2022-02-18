@@ -19,6 +19,7 @@ package com.tulskiy.musique.playlist;
 
 import com.tulskiy.musique.gui.playlist.SeparatorTrack;
 import com.tulskiy.musique.playlist.formatting.tokens.Expression;
+import com.tulskiy.musique.track.Track;
 
 import java.util.Comparator;
 

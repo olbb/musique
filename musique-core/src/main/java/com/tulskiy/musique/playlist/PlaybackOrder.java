@@ -21,6 +21,7 @@ import com.tulskiy.musique.playlist.formatting.Parser;
 import com.tulskiy.musique.playlist.formatting.tokens.Expression;
 import com.tulskiy.musique.system.Application;
 import com.tulskiy.musique.system.configuration.Configuration;
+import com.tulskiy.musique.track.Track;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

@@ -36,7 +36,7 @@ public class PlaybackQueueDialog extends JDialog {
     public PlaybackQueueDialog(final JComponent owner) {
         super(SwingUtilities.windowForComponent(owner), "Playback Queue", ModalityType.MODELESS);
         Application app = Application.getInstance();
-        final PlaybackOrder playbackOrder = app.getPlayer().getPlaybackOrder();
+        final PlaybackOrder playbackOrder = Application.getInstance().getPlayerOrder();
         final List<PlaybackOrder.QueueTuple> queue = playbackOrder.getQueue();
         final JList list = new JList(new DefaultListModel() {
             @Override

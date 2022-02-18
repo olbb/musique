@@ -28,7 +28,7 @@ import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.UIManager;
 
-import com.tulskiy.musique.gui.model.FieldValues;
+import com.tulskiy.musique.data.FieldValues;
 
 /**
  * @Author: Denis Tulskiy

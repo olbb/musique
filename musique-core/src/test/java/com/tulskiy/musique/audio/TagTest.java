@@ -17,8 +17,8 @@
 
 package com.tulskiy.musique.audio;
 
-import static com.tulskiy.musique.system.TrackIO.getAudioFileReader;
-import static com.tulskiy.musique.system.TrackIO.getAudioFileWriter;
+import static com.tulskiy.musique.track.TrackIO.getAudioFileReader;
+import static com.tulskiy.musique.track.TrackIO.getAudioFileWriter;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -34,9 +34,9 @@ import junit.framework.Assert;
 import org.jaudiotagger.tag.FieldKey;
 import org.junit.Test;
 
-import com.tulskiy.musique.gui.model.FieldValues;
-import com.tulskiy.musique.playlist.Track;
-import com.tulskiy.musique.playlist.TrackData;
+import com.tulskiy.musique.data.FieldValues;
+import com.tulskiy.musique.track.Track;
+import com.tulskiy.musique.track.TrackData;
 import com.tulskiy.musique.util.Util;
 
 /**

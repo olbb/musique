@@ -18,7 +18,7 @@
 package com.tulskiy.musique.audio.player;
 
 import com.tulskiy.musique.audio.player.io.Buffer;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.util.AudioMath;
 import org.junit.Test;
 
@@ -26,8 +26,6 @@ import javax.sound.sampled.AudioFormat;
 
 import static org.junit.Assert.*;
 
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 import java.util.Arrays;
 
 /**

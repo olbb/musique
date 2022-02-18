@@ -40,10 +40,10 @@ import com.tulskiy.musique.gui.dialogs.Task;
 import com.tulskiy.musique.gui.playlist.PlaylistTable;
 import com.tulskiy.musique.images.Images;
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
-import com.tulskiy.musique.playlist.TrackData;
+import com.tulskiy.musique.track.Track;
+import com.tulskiy.musique.track.TrackData;
 import com.tulskiy.musique.system.Application;
-import com.tulskiy.musique.system.TrackIO;
+import com.tulskiy.musique.track.TrackIO;
 import com.tulskiy.musique.util.FileUtils;
 import com.tulskiy.musique.util.Util;
 

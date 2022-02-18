@@ -27,7 +27,7 @@ import javax.swing.*;
 
 import com.tulskiy.musique.gui.menu.Menu;
 import com.tulskiy.musique.playlist.Playlist;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.plugins.discogs.dialog.DiscogsDialog;
 import com.tulskiy.musique.plugins.discogs.dialog.SettingsDialog;
 import com.tulskiy.musique.spi.Plugin;

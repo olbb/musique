@@ -17,7 +17,7 @@
 
 package com.tulskiy.musique.plugins.discogs.model;
 
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 
 /**
  * @author mliauchuk

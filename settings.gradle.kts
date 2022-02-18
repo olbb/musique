@@ -22,3 +22,4 @@ project(":jorbis").projectDir = file("dependencies/jorbis")
 project(":last.fm-bindings").projectDir = file("dependencies/last.fm-bindings")
 project(":discogs").projectDir = file("dependencies/discogs")
 
+include(":musique-player")

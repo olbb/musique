@@ -18,7 +18,7 @@
 package com.tulskiy.musique.audio;
 
 import com.tulskiy.musique.audio.formats.uncompressed.PCMEncoder;
-import com.tulskiy.musique.playlist.Track;
+import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.util.AudioMath;
 
 import javax.sound.sampled.AudioFormat;
