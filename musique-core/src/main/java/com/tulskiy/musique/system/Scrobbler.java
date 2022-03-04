@@ -15,7 +15,7 @@
  * version 3 along with this work.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.tulskiy.musique.audio;
+package com.tulskiy.musique.system;
 
 import static de.umass.lastfm.scrobble.Scrobbler.newScrobbler;
 
@@ -23,9 +23,9 @@ import com.tulskiy.musique.audio.player.Player;
 import com.tulskiy.musique.audio.player.PlayerEvent;
 import com.tulskiy.musique.audio.player.PlayerListener;
 import com.tulskiy.musique.data.Proxy;
+import com.tulskiy.musique.system.configuration.Configuration;
 import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.track.TrackData;
-import com.tulskiy.musique.data.Configuration;
 import com.tulskiy.musique.data.AudioMath;
 import com.tulskiy.musique.data.Util;
 
@@ -50,7 +50,8 @@ public class Scrobbler {
 
     private Logger logger = Logger.getLogger(getClass().getName());
     private de.umass.lastfm.scrobble.Scrobbler scrobbler;
-    private Configuration config = Proxy.Ins.getConfiguration();
+    private Application app = Application.getInstance();
+    private Configuration config = app.getConfiguration();
     private boolean authorized;
     private Player player;
 
@@ -77,23 +78,23 @@ public class Scrobbler {
             }
         });
 
-//        player = app.getPlayer();
-//        player.addListener(new PlayerListener() {
-//            @Override
-//            public void onEvent(PlayerEvent e) {
-//                if (config.getBoolean("lastfm.enabled", false)) {
-//                    SubmissionData data = nowPlaying;
-//                    switch (e.getEventCode()) {
-//                        case FILE_OPENED:
-//                            initNowPlaying(player.getTrack());
-//                            // no need to break here!
-//                        case STOPPED:
-//                            if (data != null)
-//                                submit(data);
-//                    }
-//                }
-//            }
-//        });
+        player = app.getPlayer();
+        player.addListener(new PlayerListener() {
+            @Override
+            public void onEvent(PlayerEvent e) {
+                if (config.getBoolean("lastfm.enabled", false)) {
+                    SubmissionData data = nowPlaying;
+                    switch (e.getEventCode()) {
+                        case FILE_OPENED:
+                            initNowPlaying(player.getTrack());
+                            // no need to break here!
+                        case STOPPED:
+                            if (data != null)
+                                submit(data);
+                    }
+                }
+            }
+        });
     }
 
     private void submit(SubmissionData data) {

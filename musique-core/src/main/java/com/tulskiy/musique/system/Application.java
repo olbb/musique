@@ -49,7 +49,6 @@ import javax.swing.plaf.metal.MetalFileChooserUI;
 import javax.swing.plaf.metal.MetalIconFactory;
 
 import com.tulskiy.musique.audio.AudioFileReader;
-import com.tulskiy.musique.audio.Scrobbler;
 import com.tulskiy.musique.audio.player.Player;
 import com.tulskiy.musique.audio.player.io.AudioOutput;
 import com.tulskiy.musique.gui.MainWindow;

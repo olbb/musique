@@ -9,6 +9,7 @@ plugins {
 
 dependencies {
     implementation(project(":musique-player"))
+    implementation(project(":last.fm-bindings"))
     implementation("com.github.tulskiy:jkeymaster:1.3")
     implementation("commons-configuration:commons-configuration:1.6")
     testImplementation("junit:junit:4.8.1")

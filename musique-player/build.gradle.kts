@@ -20,6 +20,5 @@ dependencies {
     implementation(project(":jmac"))
     implementation(project(":javalayer"))
     implementation(project(":jorbis"))
-    implementation(project(":last.fm-bindings"))
     api(project(":discogs"))
 }
