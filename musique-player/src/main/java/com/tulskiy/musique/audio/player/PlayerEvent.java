@@ -35,4 +35,9 @@ public class PlayerEvent {
     public PlayerEventCode getEventCode() {
         return eventCode;
     }
+
+    @Override
+    public String toString() {
+        return "[" + getEventCode() + "]";
+    }
 }

@@ -130,12 +130,16 @@ public class IcyInputStream extends FilterInputStream {
             metaIntString = connection.getHeaderField("icy-metaint");
             track.getTrackData().addGenre(connection.getHeaderField("icy-genre"));
             track.getTrackData().addAlbum(connection.getHeaderField("icy-name"));
+            long total = Long.parseLong(connection.getHeaderField("content-Length"));
+            track.getTrackData().setTotalSamples(total);
         }
-        try {
-            metaInt = Integer.parseInt(metaIntString.trim());
-            logger.fine("Reading metadata information every " + metaInt + " bytes");
-        } catch (NumberFormatException e) {
-            metaInt = 0;
+        if (metaIntString != null) {
+            try {
+                metaInt = Integer.parseInt(metaIntString.trim());
+                logger.fine("Reading metadata information every " + metaInt + " bytes");
+            } catch (NumberFormatException e) {
+                metaInt = 0;
+            }
         }
         logger.fine("Content type is: " + contentType);
     }

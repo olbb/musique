@@ -701,4 +701,15 @@ public class TrackData implements Cloneable {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "TrackData{" +
+                "sampleRate=" + sampleRate +
+                ", title=" + getTitle() +
+                ", Artist='" + getArtist() + '\'' +
+                ", bitrate=" + bitrate +
+                ", codec='" + getCodec() + '\'' +
+                ", length='" + getLength() + '\'' +
+                '}';
+    }
 }

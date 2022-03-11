@@ -26,7 +26,11 @@ import com.tulskiy.musique.audio.formats.ogg.OGGFileReader;
 import com.tulskiy.musique.audio.formats.tta.TTAFileReader;
 import com.tulskiy.musique.audio.formats.uncompressed.PCMFileReader;
 import com.tulskiy.musique.audio.formats.wavpack.WavPackFileReader;
+import com.tulskiy.musique.audio.player.Player;
+import com.tulskiy.musique.audio.player.PlayerEvent;
+import com.tulskiy.musique.audio.player.PlayerListener;
 import com.tulskiy.musique.track.Track;
+
 import org.junit.Test;
 
 import java.io.File;
@@ -38,6 +42,53 @@ import java.net.URISyntaxException;
  */
 
 public class DecoderTest {
+
+    private String FILE_NAME = "";
+    private String FILE_URL = "";
+
+    @Test
+    public void testPlayer() {
+        final Player player = new Player();
+        AudioFileReader reader = new MP3FileReader();
+        String fileName = FILE_NAME;
+        Track track = null;
+        try {
+            track = reader.read(new File(fileName));
+            track = new Track();
+            track.getTrackData().setLocation(FILE_URL);
+            player.open(track);
+            System.out.println("open file:" + track.getTrackData());
+            final StatusHolder holder = new StatusHolder();
+            player.addListener(new PlayerListener() {
+                @Override
+                public void onEvent(PlayerEvent e) {
+                    System.out.println("onEvent:" + e);
+                    switch (e.getEventCode()) {
+                        case FILE_OPENED:
+                            System.out.println("start play:" + player.getTrack().getTrackData());
+                            break;
+
+                        case FINISHED:
+                            holder.finished = true;
+                            break;
+
+                    }
+                }
+            });
+
+            while (!holder.finished) {
+                System.out.println("played:" + player.getCurrentSample() + "/" + player.getPlaybackTime());
+                Thread.sleep(1000);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static class StatusHolder {
+        boolean finished = false;
+    }
+
     @Test
     public void testMP3() {
         test(new MP3FileReader(), "testfiles/mp3/sample.mp3");
