@@ -21,7 +21,6 @@ import static com.tulskiy.musique.audio.player.Actor.Message;
 
 import com.tulskiy.musique.audio.player.io.AudioOutput;
 import com.tulskiy.musique.audio.player.io.Buffer;
-import com.tulskiy.musique.data.PlaybackOrder;
 import com.tulskiy.musique.track.Track;
 
 import java.util.ArrayList;
@@ -59,10 +58,11 @@ public class Player {
             if (track == null) {
                 next();
             } else {
-                if (getPlaybackOrder().trackPlayable(track))
-                    bufferingThread.send(Message.OPEN, track);
-                else
-                    next();
+//                if (getPlaybackOrder().trackPlayable(track))
+//                    bufferingThread.send(Message.OPEN, track);
+//                else
+//                    next();
+                bufferingThread.send(Message.OPEN, track);
             }
         }
     }
@@ -79,22 +79,26 @@ public class Player {
         bufferingThread.send(Message.STOP);
     }
 
+    @Deprecated
     public void next() {
-        Track s = getPlaybackOrder().next(getTrack());
-        if (s != null) {
-            open(s);
-        } else {
-            stop();
-        }
+//        Track s = getPlaybackOrder().next(getTrack());
+//        if (s != null) {
+//            open(s);
+//        } else {
+//            stop();
+//        }
+        logger.severe("next is do nothing yet");
     }
 
+    @Deprecated
     public void prev() {
-        Track s = getPlaybackOrder().prev(getTrack());
-        if (s != null) {
-            open(s);
-        } else {
-            stop();
-        }
+//        Track s = getPlaybackOrder().prev(getTrack());
+//        if (s != null) {
+//            open(s);
+//        } else {
+//            stop();
+//        }
+        logger.severe("prev is do nothing yet");
     }
 
     public AudioOutput getAudioOutput() {
@@ -118,7 +122,9 @@ public class Player {
     }
 
     public double getPlaybackTime() {
-        return playingThread.getPlaybackTime();
+        double time = playingThread.getPlaybackTime();
+        System.out.println("getPlaybackTime:" + time);
+        return time;
     }
 
     public boolean isPlaying() {
@@ -137,13 +143,13 @@ public class Player {
         bufferingThread.setStopAfterCurrent(stopAfterCurrent);
     }
 
-    public void setPlaybackOrder(PlaybackOrder order) {
-        bufferingThread.setOrder(order);
-    }
-
-    public PlaybackOrder getPlaybackOrder() {
-        return bufferingThread.getOrder();
-    }
+//    public void setPlaybackOrder(PlaybackOrder order) {
+//        bufferingThread.setOrder(order);
+//    }
+//
+//    public PlaybackOrder getPlaybackOrder() {
+//        return bufferingThread.getOrder();
+//    }
 
     synchronized void fireEvent(PlayerEvent.PlayerEventCode event) {
         logger.fine("Player Event: " + event);

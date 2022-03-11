@@ -17,6 +17,7 @@
 
 package com.tulskiy.musique.audio;
 
+import com.tulskiy.musique.audio.formats.Codecs;
 import com.tulskiy.musique.audio.formats.ape.APEFileReader;
 import com.tulskiy.musique.audio.formats.flac.FLACFileReader;
 import com.tulskiy.musique.audio.formats.mp3.MP3FileReader;
@@ -26,7 +27,6 @@ import com.tulskiy.musique.audio.formats.tta.TTAFileReader;
 import com.tulskiy.musique.audio.formats.uncompressed.PCMFileReader;
 import com.tulskiy.musique.audio.formats.wavpack.WavPackFileReader;
 import com.tulskiy.musique.track.Track;
-import com.tulskiy.musique.system.Codecs;
 import org.junit.Test;
 
 import java.io.File;

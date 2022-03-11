@@ -35,9 +35,9 @@ import org.jaudiotagger.tag.FieldKey;
 import org.junit.Test;
 
 import com.tulskiy.musique.data.FieldValues;
+import com.tulskiy.musique.data.Util;
 import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.track.TrackData;
-import com.tulskiy.musique.util.Util;
 
 /**
  * Author: Denis Tulskiy

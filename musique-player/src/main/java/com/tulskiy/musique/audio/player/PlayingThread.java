@@ -23,6 +23,7 @@ import com.tulskiy.musique.audio.player.io.AudioOutput;
 import com.tulskiy.musique.audio.player.io.Buffer;
 import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.data.AudioMath;
+import com.tulskiy.musique.track.TrackData;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -88,6 +89,8 @@ public class PlayingThread extends Actor implements Runnable {
         }
     }
 
+    private Buffer.Entry mCurEntry;
+
     @SuppressWarnings({"InfiniteLoopStatement"})
     @Override
     public void run() {
@@ -108,7 +111,8 @@ public class PlayingThread extends Actor implements Runnable {
                     out : while (active) {
                         int len = buffer.read(buf, 0, BUFFER_SIZE);
                         while (len == -1) {
-                            if (!openNext()) {
+                            System.out.println("read len -1");
+                            if (!openTrack(mCurEntry)) {
                                 stop();
                                 break out;
                             }
@@ -127,21 +131,21 @@ public class PlayingThread extends Actor implements Runnable {
         }
     }
 
-    private boolean openNext() {
+    public void setCurEntry(Buffer.Entry entry) {
+        mCurEntry = entry;
+    }
+
+    public boolean openTrack(Buffer.Entry entry) {
         try {
             logger.fine("Getting next track");
-            Buffer.NextEntry nextEntry = buffer.pollNextTrack();
-            if (nextEntry.track == null) {
+            if (entry == null || entry.track == null) {
                 return false;
             }
-            currentTrack = nextEntry.track;
-            if (nextEntry.forced) {
-                output.flush();
-            }
-            format = nextEntry.format;
+            currentTrack = entry.track;
+            format = entry.format;
             output.init(format);
-            if (nextEntry.startSample >= 0) {
-                currentByte = AudioMath.samplesToBytes(nextEntry.startSample, format.getFrameSize());
+            if (entry.startSample >= 0) {
+                currentByte = AudioMath.samplesToBytes(entry.startSample, format.getFrameSize());
                 player.fireEvent(PlayerEventCode.SEEK_FINISHED);
             } else {
                 currentByte = 0;
@@ -154,6 +158,39 @@ public class PlayingThread extends Actor implements Runnable {
             return false;
         }
     }
+
+    public void onTrackComplete() {
+        mCurEntry = null;
+        player.fireEvent(PlayerEventCode.FINISHED);
+    }
+
+//    private boolean openNext() {
+//        try {
+//            logger.fine("Getting next track");
+//            Buffer.NextEntry nextEntry = buffer.pollNextTrack();
+//            if (nextEntry.track == null) {
+//                return false;
+//            }
+//            currentTrack = nextEntry.track;
+//            if (nextEntry.forced) {
+//                output.flush();
+//            }
+//            format = nextEntry.format;
+//            output.init(format);
+//            if (nextEntry.startSample >= 0) {
+//                currentByte = AudioMath.samplesToBytes(nextEntry.startSample, format.getFrameSize());
+//                player.fireEvent(PlayerEventCode.SEEK_FINISHED);
+//            } else {
+//                currentByte = 0;
+//                updatePlaybackTime();
+//                player.fireEvent(PlayerEventCode.FILE_OPENED);
+//            }
+//            return true;
+//        } catch (Exception e) {
+//            logger.log(Level.WARNING, "Could not open next track", e);
+//            return false;
+//        }
+//    }
 
     private void updatePlaybackTime() {
         if (format != null) {

@@ -20,10 +20,9 @@ package com.tulskiy.musique.audio.player;
 import com.tulskiy.musique.audio.Decoder;
 import com.tulskiy.musique.audio.formats.Codecs;
 import com.tulskiy.musique.audio.player.io.Buffer;
-import com.tulskiy.musique.data.PlaybackOrder;
+import com.tulskiy.musique.data.AudioMath;
 import com.tulskiy.musique.track.Track;
 import com.tulskiy.musique.track.TrackData;
-import com.tulskiy.musique.data.AudioMath;
 
 import java.util.logging.Logger;
 
@@ -33,12 +32,12 @@ import java.util.logging.Logger;
  */
 public class BufferingThread extends Actor implements Runnable {
     private final Logger logger = Logger.getLogger(getClass().getName());
-    private PlaybackOrder order;
+//    private PlaybackOrder order;
 
     private final Object lock = new Object();
     private long currentByte = 0;
     private Track currentTrack;
-    private Track nextTrack;
+//    private Track nextTrack;
     private Decoder decoder;
     private long cueTotalBytes;
     private boolean active;
@@ -92,43 +91,45 @@ public class BufferingThread extends Actor implements Runnable {
                     }
 
                     while (active) {
-                        if (nextTrack != null) {
-                            if (stopAfterCurrent) {
-                                stop(false);
-                                stopAfterCurrent = false;
-                                continue;
-                            }
-                            open(nextTrack, false);
-                            nextTrack = null;
-                            continue;
-                        }
+//                        if (nextTrack != null) {
+//                            if (stopAfterCurrent) {
+//                                stop(false);
+//                                stopAfterCurrent = false;
+//                                continue;
+//                            }
+//                            open(nextTrack, false);
+//                            nextTrack = null;
+//                            continue;
+//                        }
 
                         len = decoder.decode(buf);
 
                         if (len == -1) {
-                            nextTrack = null;
-                            if (order != null)
-                                nextTrack = order.next(currentTrack);
-                            if (nextTrack == null) {
-                                stop(false);
-                            }
+//                            nextTrack = null;
+//                            if (order != null)
+//                                nextTrack = order.next(currentTrack);
+//                            if (nextTrack == null) {
+//                                stop(false);
+//                            }
+                            stop(false);
+                            playingThread.onTrackComplete();
                             continue;
                         }
 
-                        if (currentTrack.getTrackData().isCue()) {
-                            if (cueTotalBytes <= currentByte + len) {
-                                Track s = null;
-                                if (order != null)
-                                    s = order.next(currentTrack);
-
-                                len = (int) (cueTotalBytes - currentByte);
-                                if (s != null) {
-                                    nextTrack = s;
-                                } else {
-                                    stop(false);
-                                }
-                            }
-                        }
+//                        if (currentTrack.getTrackData().isCue()) {
+//                            if (cueTotalBytes <= currentByte + len) {
+//                                Track s = null;
+//                                if (order != null)
+//                                    s = order.next(currentTrack);
+//
+//                                len = (int) (cueTotalBytes - currentByte);
+//                                if (s != null) {
+//                                    nextTrack = s;
+//                                } else {
+//                                    stop(false);
+//                                }
+//                            }
+//                        }
 
                         currentByte += len;
 
@@ -143,9 +144,9 @@ public class BufferingThread extends Actor implements Runnable {
 
     public void stop(boolean flush) {
         logger.fine("Stop buffering");
-        nextTrack = null;
+//        nextTrack = null;
         pause(flush);
-        buffer.addNextTrack(null, null, -1, false);
+//        buffer.addNextTrack(null, null, -1, false);
         if (decoder != null) {
             decoder.close();
         }
@@ -180,12 +181,14 @@ public class BufferingThread extends Actor implements Runnable {
 
             if (trackData.isFile() && !trackData.getFile().exists()) {
                 //try to get the next one
-                track = order.next(track);
-                if (track == null || (
-                		trackData.isFile() && !trackData.getFile().exists())) {
-                    stop(false);
-                    return;
-                }
+//                track = order.next(track);
+//                if (track == null || (
+//                		trackData.isFile() && !trackData.getFile().exists())) {
+//                    stop(false);
+//                    return;
+//                }
+                stop(false);
+                return;
             }
             decoder = Codecs.getDecoder(track);
             currentTrack = track;
@@ -197,7 +200,8 @@ public class BufferingThread extends Actor implements Runnable {
                 return;
             }
 
-            buffer.addNextTrack(currentTrack, decoder.getAudioFormat(), -1, forced);
+            Buffer.Entry entry = buffer.setTrack(currentTrack, decoder.getAudioFormat(), -1, forced);
+            playingThread.setCurEntry(entry);
 
             if (trackData.getStartPosition() > 0)
                 decoder.seekSample(trackData.getStartPosition());
@@ -222,20 +226,20 @@ public class BufferingThread extends Actor implements Runnable {
         if (decoder != null) {
             decoder.seekSample(currentTrack.getTrackData().getStartPosition() + sample);
             currentByte = AudioMath.samplesToBytes(sample, decoder.getAudioFormat().getFrameSize());
-            buffer.addNextTrack(currentTrack, decoder.getAudioFormat(), sample, true);
+//            buffer.addNextTrack(currentTrack, decoder.getAudioFormat(), sample, true);
             if (oldState) {
                 start();
             }
         }
     }
 
-    public PlaybackOrder getOrder() {
-        return order;
-    }
-
-    public void setOrder(PlaybackOrder order) {
-        this.order = order;
-    }
+//    public PlaybackOrder getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(PlaybackOrder order) {
+//        this.order = order;
+//    }
 
     public boolean isActive() {
         return active;

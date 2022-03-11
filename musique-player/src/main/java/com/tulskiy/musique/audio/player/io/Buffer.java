@@ -32,8 +32,8 @@ import javax.sound.sampled.AudioFormat;
  */
 public class Buffer {
     private RingBuffer buffer;
-    private BlockingQueue<NextEntry> trackQueue = new LinkedBlockingDeque<NextEntry>();
-    private Queue<Integer> when = new LinkedList<Integer>();
+//    private BlockingQueue<NextEntry> trackQueue = new LinkedBlockingDeque<NextEntry>();
+//    private Queue<Integer> when = new LinkedList<Integer>();
     private int bytesLeft = 0;
 
     public Buffer(int size) {
@@ -48,34 +48,40 @@ public class Buffer {
         buffer.put(b, off, len);
     }
 
-    public void addNextTrack(Track track, AudioFormat format, long startSample, boolean forced) {
-        int bytesLeft = available();
-        for (Integer left : when) {
-            bytesLeft -= left;
-        }
-        if (trackQueue.isEmpty())
-            this.bytesLeft = bytesLeft;
-        else
-            when.add(bytesLeft);
-        trackQueue.add(new NextEntry(track, format, startSample, forced));
+    public Entry setTrack(Track track, AudioFormat format, long startSample, boolean forced) {
+        bytesLeft = -1;
+//        System.out.println("setTrack bytesLeft:" + bytesLeft);
+        return new Entry(track, format, startSample, forced);
     }
 
-    public NextEntry pollNextTrack() {
-        NextEntry nextEntry = null;
-        try {
-            nextEntry = trackQueue.take();
-            buffer.setEOF(false);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//    public void addNextTrack(Track track, AudioFormat format, long startSample, boolean forced) {
+//        int bytesLeft = available();
+//        for (Integer left : when) {
+//            bytesLeft -= left;
+//        }
+//        if (trackQueue.isEmpty())
+//            this.bytesLeft = bytesLeft;
+//        else
+//            when.add(bytesLeft);
+//        trackQueue.add(new NextEntry(track, format, startSample, forced));
+//    }
 
-        if (!when.isEmpty()) {
-            bytesLeft = when.poll();
-        } else {
-            bytesLeft = -1;
-        }
-        return nextEntry;
-    }
+//    public NextEntry pollNextTrack() {
+//        NextEntry nextEntry = null;
+//        try {
+//            nextEntry = trackQueue.take();
+//            buffer.setEOF(false);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        if (!when.isEmpty()) {
+//            bytesLeft = when.poll();
+//        } else {
+//            bytesLeft = -1;
+//        }
+//        return nextEntry;
+//    }
 
     public int read(byte[] b, int off, int len) {
         if (bytesLeft > 0) {
@@ -101,13 +107,13 @@ public class Buffer {
         buffer.empty();
     }
 
-    public class NextEntry {
+    public class Entry {
         public Track track;
         public AudioFormat format;
         public long startSample;
         public boolean forced;
 
-        NextEntry(Track track, AudioFormat format, long startSample, boolean forced) {
+        Entry(Track track, AudioFormat format, long startSample, boolean forced) {
             this.track = track;
             this.format = format;
             this.startSample = startSample;

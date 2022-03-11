@@ -7,6 +7,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_7
 }
 
+repositories {
+    mavenLocal()
+    maven {
+        url = uri("https://repo.maven.apache.org/maven2/")
+    }
+}
+
+
 dependencies {
     implementation(project(":alacdecoder"))
     implementation(project(":jaad"))
@@ -21,4 +29,6 @@ dependencies {
     implementation(project(":javalayer"))
     implementation(project(":jorbis"))
     api(project(":discogs"))
+
+    testImplementation("junit:junit:4.8.1")
 }
